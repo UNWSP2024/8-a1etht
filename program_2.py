@@ -1,23 +1,18 @@
-# Program #2: Word Separator
-# Write a program that accepts as input a sentence in which all of the words are run together, 
-# but the first character of each word is uppercase.  
-# Convert the sentence to a string in which the words are separated by spaces, 
-# and the first word starts with an uppercase.  
-# For example the string "StopAndSmellTheRoses" would be converted to "Stop and smell the roses."
+#Programmer: Alethea Lo
+#Date: 3/16/25
+#Title: Word Separator
 
-# Start your changes on line 13
+import re
 
-def word_separator(sentence):
+def split_camel_case(sentence):
+    words = re.findall(r'[A-Z][a-z]*', sentence)
 
-    new_sentence = ""
-    #    Add your logic here
+    formatted_sentence = words[0] + ' ' + ' '.join(word.lower() for word in words[1:])
 
-    return new_sentence.strip()
+    return formatted_sentence
 
-# Example usage
+#User Input
+camel_case_sentence = input("Enter a CamelCase sentence: ")
 
-sentence = "StopAndSmellTheRoses"
-
-new_sentence = word_separator(sentence)
-
-print(new_sentence)
+#Displaying the results
+print("Formatted sentence:", split_camel_case(camel_case_sentence))
